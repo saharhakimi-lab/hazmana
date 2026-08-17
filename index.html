@@ -72,7 +72,7 @@
       <h1 class="display font-black text-4xl sm:text-5xl leading-tight text-slate-900">מעצבים <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-fuchsia-600">הזמנה חגיגית</span></h1>
     </div>
     <p class="text-lg text-slate-600 font-semibold max-w-2xl">
-      המותג שלכם מוכן, הלוגו במקום, ויש לכם כרזה חזקה. עכשיו הגיע הזמן להזמין את הקהל שלכם לאירוע הגדול: אירוע השקה, תערוכה, פתיחת חנות או כנס חגיגי. הזמנה צריכה להיות ברורה, קריאה, ולשדר את האווירה המדויקת של המותג.
+      המותג שלכם מוכן, הלוגו במקום, ויש לכם כרזה חזקה. עכשיו הגיע הזמן להזמין את הקהל שלכם לאירוע הגדול: אירוע השקה, תערוכה, פתיחת חנות או ככנס חגיגי. הזמנה צריכה להיות ברורה, קריאה, ולשדר את האווירה המדויקת של המותג.
     </p>
   </header>
 
@@ -408,50 +408,108 @@
       </div>
     </section>
 
-    <!-- ==================== שלבי העבודה המקוריים (כרטיסיות לבנות ובהירות) ==================== -->
-    <section class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border-r-8 border-teal-500">
-      <span class="display font-black text-xs text-teal-600 uppercase tracking-wider">שלב 1: תכנון ועריכת תוכן</span>
-      <h2 class="display font-black text-2xl text-slate-900 mt-1 mb-4">מה חובה שיופיע בהזמנה?</h2>
-      
-      <p class="text-slate-600 mb-6 font-semibold">
-        הזמנה שלא נותנת את כל הפרטים גורמת לאנשים לא להגיע. לפני שפותחים את התוכנה הגרפית, מלאו את הפרטים הבאים כדי לוודא שיש לכם את כל הטקסטים מוכנים:
-      </p>
+    <!-- ==================== שלב 1: מחולל הזמנה אינטראקטיבי ==================== -->
+    <section class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border-r-8 border-teal-500 space-y-6">
+      <div>
+        <span class="display font-black text-xs text-teal-600 uppercase tracking-wider">שלב 1: מחולל ותכנון תוכן</span>
+        <h2 class="display font-black text-2xl text-slate-900 mt-1">אשף עיצוב ותכנון ההזמנה</h2>
+        <p class="text-slate-600 font-semibold text-sm mt-1">מלאו את הפרטים, העלו לוגו והגדירו העדפות עיצוב כדי לייצר סקיצת SVG ראשונית.</p>
+      </div>
 
-      <div class="space-y-4">
-        <div>
-          <label class="block text-sm font-bold text-slate-700 mb-1">כותרת ההזמנה (מה האירוע?)</label>
-          <input type="text" placeholder="למשל: השקת קולקציית הקיץ של PixelPets / אירוע השקת עונת השידורים" 
-                 class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 focus:border-indigo-500 outline-none font-semibold text-slate-800 placeholder-slate-400">
-        </div>
-        
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm font-bold text-slate-700 mb-1">תאריך ושעה</label>
-            <input type="text" placeholder="למשל: יום חמישי, 12.4, בשעה 19:00" 
-                   class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 focus:border-indigo-500 outline-none font-semibold text-slate-800 placeholder-slate-400">
-          </div>
-          <div>
-            <label class="block text-sm font-bold text-slate-700 mb-1">מיקום / פלטפורמה</label>
-            <input type="text" placeholder="למשל: גני התערוכה, ביתן 2 / בשידור חי בטיקטוק" 
-                   class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 focus:border-indigo-500 outline-none font-semibold text-slate-800 placeholder-slate-400">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- העלאת לוגו -->
+        <div class="md:col-span-2">
+          <label class="block text-sm font-bold text-slate-700 mb-2">1. העלאת קובץ לוגו (PNG ברקע שקוף)</label>
+          <div class="flex items-center gap-4 bg-slate-50 border-2 border-dashed border-slate-300 rounded-xl p-4 hover:border-teal-500 transition-colors">
+            <input type="file" id="logoUpload" accept="image/*" class="text-sm text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100 cursor-pointer">
+            <div id="logoPreviewContainer" class="hidden w-12 h-12 rounded-lg bg-slate-200 border flex items-center justify-center overflow-hidden">
+              <img id="logoPreviewImg" src="" alt="תצוגת לוגו" class="max-w-full max-h-full object-contain">
+            </div>
           </div>
         </div>
 
+        <!-- כותרת -->
         <div>
-          <label class="block text-sm font-bold text-slate-700 mb-1">משפט הנעה לפעולה או תיאור קצר (קופי)</label>
-          <textarea rows="3" placeholder="למשל: 'הצטרפו אלינו לערב בלתי נשכח מלא בהפתעות, מיצגים בלעדיים וכיבוד עשיר. מחכים לכם!'" 
-                    class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 focus:border-indigo-500 outline-none font-semibold text-slate-800 placeholder-slate-400"></textarea>
+          <label class="block text-sm font-bold text-slate-700 mb-1">2. כותרת האירוע (מה האירוע?)</label>
+          <input type="text" id="eventTitle" placeholder="למשל: השקת קולקציית הקיץ של PixelPets" 
+                 class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 focus:border-teal-500 outline-none font-semibold text-slate-800 text-sm">
+        </div>
+
+        <!-- תאריך ושעה -->
+        <div>
+          <label class="block text-sm font-bold text-slate-700 mb-1">3. תאריך ושעה</label>
+          <input type="text" id="eventDateTime" placeholder="למשל: יום חמישי, 12.4 | בשעה 19:00" 
+                 class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 focus:border-teal-500 outline-none font-semibold text-slate-800 text-sm">
+        </div>
+
+        <!-- מיקום -->
+        <div>
+          <label class="block text-sm font-bold text-slate-700 mb-1">4. מיקום / פלטפורמה</label>
+          <input type="text" id="eventLocation" placeholder="למשל: גני התערוכה, ביתן 2 / בשידור חי בטיקטוק" 
+                 class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 focus:border-teal-500 outline-none font-semibold text-slate-800 text-sm">
+        </div>
+
+        <!-- העדפות עיצוב אישיות -->
+        <div>
+          <label class="block text-sm font-bold text-slate-700 mb-1">5. העדפות עיצוב אישיות (צבעים / אווירה)</label>
+          <input type="text" id="designStyle" placeholder="למשל: יוקרתי וזהב, ניאון וסייבר, כפרי ורגוע..." 
+                 class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 focus:border-teal-500 outline-none font-semibold text-slate-800 text-sm">
+        </div>
+
+        <!-- קופי / תיאור -->
+        <div class="md:col-span-2">
+          <label class="block text-sm font-bold text-slate-700 mb-1">6. משפט הנעה לפעולה או תיאור קצר (קופי)</label>
+          <textarea id="eventCopy" rows="2" placeholder="למשל: הצטרפו אלינו לערב בלתי נשכח מלא בהפתעות, מיצגים בלעדיים וכיבוד עשיר. מחכים לכם!" 
+                    class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 focus:border-teal-500 outline-none font-semibold text-slate-800 text-sm"></textarea>
         </div>
       </div>
 
-      <div class="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-4 flex gap-3 items-start">
+      <!-- טיפ מטוביה -->
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex gap-3 items-start">
         <span class="text-xl">💡</span>
         <p class="text-sm text-amber-900 font-semibold">
           <strong>טיפ מטוביה:</strong> מרגישים שהניסוח שלכם קצת יבש? העתיקו את הפרטים שמילאתם כאן, לחצו על הכפתור של טוביה, ובקשו ממנו: <em class="underline block mt-1">"הנה פרטי האירוע שלי. תן לי 3 אפשרויות שונות לניסוח קופי מדליק ומזמין להזמנה גרפית באווירה [הכניסו את אווירת המותג שלכם]"</em>
         </p>
       </div>
+
+      <!-- כפתור יצירה -->
+      <button onclick="generateStudentSVG()" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-black py-3 rounded-xl shadow-lg transition-all transform hover:scale-[1.01] flex items-center justify-center gap-2">
+        <span>✨</span>
+        <span>צור קוד SVG ותצוגה מקדימה</span>
+      </button>
+
+      <!-- אזור תוצאת SVG ותצוגה (מוסתר עד ללחיצה) -->
+      <div id="studentResultArea" class="hidden mt-8 pt-6 border-t border-slate-200 space-y-6">
+        <h3 class="font-bold text-lg text-slate-900 flex items-center gap-2">
+          <span>🚀</span> התוצר השלם שלך (קוד + תצוגה)
+        </h3>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+          <!-- קוד SVG -->
+          <div class="bg-slate-950 rounded-2xl p-4 border border-slate-800 flex flex-col h-[450px]">
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-800">
+              <span class="text-xs font-bold text-teal-400">קוד SVG מיוצר</span>
+              <button onclick="navigator.clipboard.writeText(document.getElementById('generatedCode').innerText)" class="text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-200 px-2 py-1 rounded">העתק קוד</button>
+            </div>
+            <div class="flex-1 overflow-auto bg-black/50 p-2 rounded dir-ltr text-left">
+              <pre class="text-xs text-emerald-400 font-mono"><code id="generatedCode"></code></pre>
+            </div>
+          </div>
+
+          <!-- תצוגה חזותית -->
+          <div class="bg-slate-950 rounded-2xl p-4 border border-slate-800 flex flex-col h-[450px]">
+            <div class="pb-2 mb-2 border-b border-slate-800">
+              <span class="text-xs font-bold text-fuchsia-400">תצוגה מקדימה לתוצר</span>
+            </div>
+            <div id="generatedPreview" class="flex-1 overflow-hidden bg-slate-900 rounded-xl flex items-center justify-center p-2">
+              <!-- תוכן ה-SVG יוזרק לכאן -->
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
+    <!-- ==================== שלב 2 ==================== -->
     <section class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border-r-8 border-indigo-600">
       <span class="display font-black text-xs text-indigo-600 uppercase tracking-wider">שלב 2: הגדרות טכניות בתוכנה</span>
       <h2 class="display font-black text-2xl text-slate-900 mt-1 mb-4">איך פותחים את הקובץ?</h2>
@@ -487,6 +545,7 @@
       </div>
     </section>
 
+    <!-- ==================== שלב 3 ==================== -->
     <section class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border-r-8 border-fuchsia-600">
       <span class="display font-black text-xs text-fuchsia-600 uppercase tracking-wider">שלב 3: חוקי העיצוב להזמנה מנצחת</span>
       <h2 class="display font-black text-2xl text-slate-900 mt-1 mb-4">דגשים ויזואליים שאתם חייבים ליישם</h2>
@@ -540,5 +599,81 @@
 
   </main>
 
+  <script>
+    let base64Logo = '';
+
+    // טיפול בהעלאת קובץ לוגו
+    document.getElementById('logoUpload').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          base64Logo = evt.target.result;
+          document.getElementById('logoPreviewImg').src = base64Logo;
+          document.getElementById('logoPreviewContainer').classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // מחולל ה-SVG של התלמיד
+    function generateStudentSVG() {
+      const title = document.getElementById('eventTitle').value || 'שם האירוע שלך';
+      const dateTime = document.getElementById('eventDateTime').value || 'תאריך ושעה';
+      const location = document.getElementById('eventLocation').value || 'מיקום האירוע';
+      const copy = document.getElementById('eventCopy').value || 'תיאור קצר והנעה לפעולה';
+      const style = document.getElementById('designStyle').value || 'עיצוב אישי';
+
+      const logoElement = base64Logo 
+        ? `<image href="${base64Logo}" x="320" y="80" width="160" height="100" preserveAspectRatio="xMidYMid meet" />`
+        : `<circle cx="400" cy="130" r="45" fill="#334155" /><text x="400" y="135" text-anchor="middle" fill="#94A3B8" font-size="14">לוגו</text>`;
+
+      const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="100%" height="100%" dir="rtl">
+  <defs>
+    <linearGradient id="stBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#1E1B4B" />
+    </linearGradient>
+    <linearGradient id="stAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0D9488" />
+      <stop offset="100%" stop-color="#9333EA" />
+    </linearGradient>
+  </defs>
+
+  <!-- רקע -->
+  <rect width="800" height="1000" fill="url(#stBg)" rx="20"/>
+
+  <!-- לוגו -->
+  ${logoElement}
+
+  <!-- כותרת -->
+  <text x="400" y="260" text-anchor="middle" fill="#F8FAFC" font-family="Rubik, sans-serif" font-weight="900" font-size="36">${title}</text>
+  
+  <!-- סגנון אישי -->
+  <rect x="250" y="290" width="300" height="30" rx="15" fill="url(#stAccent)" opacity="0.8"/>
+  <text x="400" y="310" text-anchor="middle" fill="#FFFFFF" font-family="Assistant, sans-serif" font-size="14">סגנון: ${style}</text>
+
+  <!-- קופי -->
+  <text x="400" y="400" text-anchor="middle" fill="#CBD5E1" font-family="Assistant, sans-serif" font-size="18">${copy}</text>
+
+  <!-- פרטי האירוע -->
+  <g transform="translate(400, 550)">
+    <rect x="-250" y="-60" width="500" height="120" rx="16" fill="#FFFFFF" fill-opacity="0.05" stroke="#FFFFFF" stroke-opacity="0.1"/>
+    <text x="0" y="-10" text-anchor="middle" fill="#2DD4BF" font-family="Rubik, sans-serif" font-weight="700" font-size="18">📅 ${dateTime}</text>
+    <text x="0" y="30" text-anchor="middle" fill="#F1F5F9" font-family="Assistant, sans-serif" font-size="16">📍 ${location}</text>
+  </g>
+
+  <!-- כפתור הנעה לפעולה -->
+  <g transform="translate(400, 780)">
+    <rect x="-150" y="-25" width="300" height="50" rx="25" fill="url(#stAccent)"/>
+    <text x="0" y="6" text-anchor="middle" fill="#FFFFFF" font-family="Rubik, sans-serif" font-weight="700" font-size="18">אישור הגעה ✉️</text>
+  </g>
+</svg>`;
+
+      document.getElementById('generatedCode').textContent = svgContent;
+      document.getElementById('generatedPreview').innerHTML = svgContent;
+      document.getElementById('studentResultArea').classList.remove('hidden');
+    }
+  </script>
 </body>
 </html>
